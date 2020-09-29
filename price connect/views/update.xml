@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!--inherit and add fields to sale order-->
-
+    
+        <record id="product_pricelist_item_inherit" model="ir.ui.view">
+        <field name="name">product.pricelist.item.inherit</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+        <field name="arch" type="xml">
+            <field name="fixed_price" position="after">
+                <field name="remote_id"/>
+            </field>
+        </field>
+    </record>
+    
        <!--tree view of the patient model-->
     <record id="update_tree" model="ir.ui.view">
         <field name="name">update.prices.tree</field>
