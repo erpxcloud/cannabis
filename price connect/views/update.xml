@@ -2,7 +2,7 @@
 <odoo>
     <!--inherit and add fields to sale order-->
     <record id="sale_order_inherit" model="ir.ui.view">
-        <field name="name">product.pricelist.item.inherit</field>
+        <field name="name">product.pricelist.inherit</field>
         <field name="model">product.pricelist.item</field>
         <field name="inherit_id" ref="product.product_pricelist_view"/>
         <field name="arch" type="xml">
