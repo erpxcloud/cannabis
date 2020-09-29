@@ -5,7 +5,7 @@ import xmlrpc.client
 
 
 class SaleOrderInherit(models.Model):
-    _inherit = 'product.pricelist'
+    _inherit = 'product.pricelist.item'
 
     remote_id = fields.Char(string='Remote ID', required=True,  track_visibility="always")
 
