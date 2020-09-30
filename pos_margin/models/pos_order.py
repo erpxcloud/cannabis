@@ -26,7 +26,7 @@ class PosOrder(models.Model):
     )
 
     # Compute Section
-    @api.multi
+    
     @api.depends('lines.margin', 'lines.price_subtotal')
     def _compute_margin(self):
         for order in self:
