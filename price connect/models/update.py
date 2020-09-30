@@ -39,14 +39,10 @@ class UpdatePrices(models.Model):
         for i in data:
             matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
             for match in matches:
-                 
-                 _logger = logging.getLogger(__name__)
-                 _logger.error(match)
                  qty = match['min_quantity']
                  if qty== 0:
                     qty =1
                  pricelist = self.env['product.pricelist.item'].browse(match['id']).sudo()
-                 _logger.error(pricelist)
                  values['fixed_price'] = i['Retail Price']/qty
                  pricelist.write(values)
                  #pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
