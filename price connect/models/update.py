@@ -25,11 +25,10 @@ class UpdatePrices(models.Model):
     password = fields.Char(string='Password', required=True,  track_visibility="always")
     update_date = fields.Datetime(string='Update Date')
     last_update = fields.Date(string='Last Update', readonly=True, compute=set_last_update)
-    remote_id = fields.Char(string='Remote ID', required=True,  track_visibility="always")
 
     def action_button_test(self):
-        f = open('/home/hadi/Documents/70.32.30.112.json', )
-        data = json.load(f)
+        with urllib.request.urlopen("http://70.32.30.112:8035/") as url:
+        data = json.loads(url.read().decode())
     #    print(data[0]['Date'])
         for i in data:
             matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
