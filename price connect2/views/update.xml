@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--inherit and add fields to sale order-->
+    
+        <record id="product_pricelist_item_inherit" model="ir.ui.view">
+        <field name="name">product.pricelist.item.inherit</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+        <field name="arch" type="xml">
+            <field name="fixed_price" position="after">
+                <field name="remote_id"/>
+            </field>
+        </field>
+    </record>
+    
+       <!--tree view of the patient model-->
+    <record id="update_tree" model="ir.ui.view">
+        <field name="name">update.prices.tree</field>
+        <field name="model">update.prices</field>
+        <field name="arch" type="xml">
+            <tree string="Update">
+                <field name="url_db"/>
+                <field name="db"/>
+                <field name="username"/>
+                <field name="password"/>
+            </tree>
+        </field>
+     </record>
+    <!--form view of the patient model-->
+ <record id="update_form" model="ir.ui.view">
+        <field name="name">update.prices.form</field>
+        <field name="model">update.prices</field>
+        <field name="arch" type="xml">
+            <form string="Update">
+                <sheet>
+                    <div>
+                        <button name="action_button_test" type="object" string="Update" class="btn-primary"
+                        icon="fa-calendar"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="url_db"/>
+                            <field name="db"/>
+                            <field name="last_update"/>
+                        </group>
+                        <group>
+                            <field name="username"/>
+                            <field name="password"/>
+                            <field name="update_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+ </record>
+           <!--action of the patients menu-->
+    <record id="action_update" model="ir.actions.act_window">
+        <field name="name">Update</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">update.prices</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_male":1}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create your First Update !
+          </p>
+        </field>
+    </record>
+
+    <!--creating menus-->
+    <menuitem id="update_root" name="Prices" sequence="1" web_icon="om_hospital,static/description/icon.png"/>
+    <menuitem id="update_prices" name="Update" action="action_update" parent="update_root" sequence="10"/>
+</odoo>

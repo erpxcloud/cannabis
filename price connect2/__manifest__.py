@@ -1,0 +1,23 @@
+{
+    'name': 'Update Module',
+    'version': '12.0.1.0.0',
+    'category': 'Extra Tools',
+    'summary': 'Update Module',
+    'sequence': '10',
+    'license': 'AGPL-3',
+    'author': 'Hadi',
+    'maintainer': 'hadi',
+    'website': 'hadi.com',
+    'live_test_url': 'https://www.youtube.com/watch?v=BDepk0LhVuI&list=PLqRRLx0cl0hoJhjFWkFYowveq2Zn55dhM&index=1',
+    'depends': ['sale_management', ],
+    'demo': [],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/cron.xml',
+        'views/update.xml',
+    ],
+    'images': ['static/description/banner.png'],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}
