@@ -38,7 +38,7 @@ class UpdatePrices(models.Model):
     #    print(data[0]['Date'])
       #  for i in data:
         matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
-            for match in matches:
+        for match in matches:
                  
                  _logger = logging.getLogger(__name__)
                  _logger.error(match)
