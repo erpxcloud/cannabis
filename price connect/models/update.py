@@ -33,16 +33,20 @@ class UpdatePrices(models.Model):
         #with urllib.request.urlopen("http://70.32.30.112:8035/") as url:
         #data = json.loads(url.read().decode())
         
-
+        values = {}
         data = json.loads(requests.get("http://70.32.30.112:8035/").text)
     #    print(data[0]['Date'])
         for i in data:
             matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
             for match in matches:
-                 print()
+                 
                  _logger = logging.getLogger(__name__)
                  _logger.error(match)
-
+                 pricelist = self.env['product.pricelist'].browse(match).sudo()
+                _logger.error('pricelist')
+                _logger.error(pricelist)
+                 values['pricelist_id'] = i['Retail Price']
+                 pricelist.write(values)
                  #pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
                  #print(pricelist.remote_id)
                  #print(pricelist.id)
