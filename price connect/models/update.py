@@ -44,7 +44,7 @@ class UpdatePrices(models.Model):
                  _logger.error(match)
                  pricelist = self.env['product.pricelist'].browse(match).sudo()
                  _logger.error(pricelist)
-                 values['pricelist_id'] = i['Retail Price']
+                 values['fixed_price'] = i['Retail Price']
                  pricelist.write(values)
                  #pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
                  #print(pricelist.remote_id)
