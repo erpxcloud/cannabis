@@ -3,6 +3,8 @@
 from odoo import models, fields, api,  _
 import xmlrpc.client
 import json
+import requests
+
 
 
 class SaleOrderInherit(models.Model):
@@ -27,8 +29,11 @@ class UpdatePrices(models.Model):
     last_update = fields.Date(string='Last Update', readonly=True, compute=set_last_update)
 
     def action_button_test(self):
-        with urllib.request.urlopen("http://70.32.30.112:8035/") as url:
-        data = json.loads(url.read().decode())
+        #with urllib.request.urlopen("http://70.32.30.112:8035/") as url:
+        #data = json.loads(url.read().decode())
+        
+
+        data = json.loads(requests.get("http://70.32.30.112:8035/").text)
     #    print(data[0]['Date'])
         for i in data:
             matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
