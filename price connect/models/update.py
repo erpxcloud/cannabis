@@ -43,7 +43,7 @@ class UpdatePrices(models.Model):
                  _logger = logging.getLogger(__name__)
                  _logger.error(match)
                  qty = match['min_quantity']
-                 if qty= 0:
+                 if qty== 0:
                     qty =1
                  pricelist = self.env['product.pricelist.item'].browse(match['id']).sudo()
                  _logger.error(pricelist)
