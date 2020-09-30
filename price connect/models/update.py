@@ -34,17 +34,17 @@ class UpdatePrices(models.Model):
         #data = json.loads(url.read().decode())
         
             values = {}
-       # data = json.loads(requests.get("http://70.32.30.112:8035/").text) i['Barcode']
+        data = json.loads(requests.get("http://70.32.30.112:8035/").text)
     #    print(data[0]['Date'])
       #  for i in data:
-            matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', 6223006040014)], )
+            matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
             for match in matches:
                  
                  _logger = logging.getLogger(__name__)
                  _logger.error(match)
                  pricelist = self.env['product.pricelist.item'].browse(match['id']).sudo()
                  _logger.error(pricelist)
-                 values['fixed_price'] = 11# i['Retail Price']
+                 values['fixed_price'] = i['Retail Price']
                  pricelist.write(values)
                  #pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
                  #print(pricelist.remote_id)
