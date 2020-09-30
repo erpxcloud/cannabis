@@ -35,23 +35,3 @@ class UpdatePrices(models.Model):
             matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
             match = matches[0]
             self.env['product.pricelist.item'].sudo().browse(match.write({'fixed_price': i['Retail Price']})
-    #    for i in data:
-    #        print(data[i]['Date'])
-    #    url_db = self.url_db
-    #   db = self.db
-    #    username = self.username
-    #    password = self.password
-    #    common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url_db))
-    #    models2 = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url_db))
-    #    uid_db = common.authenticate(db, username, password, {})
-
-    #    products = models2.execute_kw(db, uid_db, password, 'product.template', 'search_read',
-    #                                    [[['write_date', '>', self.update_date]]],
-    #                                     {'fields': ['list_price']})
-    #    initial_number = len(products)
-    #    print(initial_number)
-    #    print("products", products)
-    #    for product in products:
-    #        matches = self.env['product.template'].sudo().search_read([('remote_id', '=', product['id'])], ['id'])
-    #        match = matches[0]
-    #        self.env['product.template'].sudo().browse(match['id']).write({'list_price': product['list_price']})
