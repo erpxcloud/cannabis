@@ -38,7 +38,8 @@ class UpdatePrices(models.Model):
         for i in data:
             matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
             for match in matches:
-                 pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
-                 print(pricelist.remote_id)
-                 print(pricelist.id)
+                 print(match)
+                 #pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
+                 #print(pricelist.remote_id)
+                 #print(pricelist.id)
                  #pricelist.sudo().write({'fixed_price': i['Retail Price']})
