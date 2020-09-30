@@ -43,7 +43,6 @@ class UpdatePrices(models.Model):
                  _logger = logging.getLogger(__name__)
                  _logger.error(match)
                  pricelist = self.env['product.pricelist'].browse(match).sudo()
-                _logger.error("pricelist")
                 _logger.error(pricelist)
                  values['pricelist_id'] = i['Retail Price']
                  pricelist.write(values)
