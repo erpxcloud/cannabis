@@ -33,7 +33,7 @@ class UpdatePrices(models.Model):
         #with urllib.request.urlopen("http://70.32.30.112:8035/") as url:
         #data = json.loads(url.read().decode())
         
-            values = {}
+        values = {}
         data = json.loads(requests.get("http://70.32.30.112:8035/").text)
     #    print(data[0]['Date'])
       #  for i in data:
@@ -42,6 +42,7 @@ class UpdatePrices(models.Model):
                  
                  _logger = logging.getLogger(__name__)
                  _logger.error(match)
+
                  pricelist = self.env['product.pricelist.item'].browse(match['id']).sudo()
                  _logger.error(pricelist)
                  values['fixed_price'] = i['Retail Price']
