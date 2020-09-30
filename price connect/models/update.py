@@ -4,6 +4,7 @@ from odoo import models, fields, api,  _
 import xmlrpc.client
 import json
 import requests
+import logging
 
 
 
@@ -38,7 +39,10 @@ class UpdatePrices(models.Model):
         for i in data:
             matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
             for match in matches:
-                 print(match)
+                 print()
+                 _logger = logging.getLogger(__name__)
+                 _logger.error(match)
+
                  #pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
                  #print(pricelist.remote_id)
                  #print(pricelist.id)
