@@ -37,15 +37,17 @@ class UpdatePrices(models.Model):
         data = json.loads(requests.get("http://70.32.30.112:8035/").text)
     #    print(data[0]['Date'])
         for i in data:
-            matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
-            for match in matches:
-                 qty = match['min_quantity']
-                 if qty== 0:
-                    qty =1
-                 pricelist = self.env['product.pricelist.item'].browse(match['id']).sudo()
-                 values['fixed_price'] = i['Retail Price']/qty
-                 pricelist.write(values)
-                 #pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
-                 #print(pricelist.remote_id)
-                 #print(pricelist.id)
-                 #pricelist.sudo().write({'fixed_price': i['Retail Price']})
+            iupdate_date = datetime.strptime(data[0]['Date'], '%Y-%m-%d %H:%M:%S')
+            if self.update_date < iupdate_date :
+                matches = self.env['product.pricelist.item'].sudo().search_read([('remote_id', '=', i['Barcode'])], )
+                for match in matches:
+                     qty = match['min_quantity']
+                     if qty== 0:
+                        qty =1
+                     pricelist = self.env['product.pricelist.item'].browse(match['id']).sudo()
+                     values['fixed_price'] = i['Retail Price']/qty
+                     pricelist.write(values)
+                     #pricelist = self.env['product.pricelist.item'].sudo().browse(match.id)  
+                     #print(pricelist.remote_id)
+                     #print(pricelist.id)
+                     #pricelist.sudo().write({'fixed_price': i['Retail Price']})
