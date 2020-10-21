@@ -35,4 +35,4 @@ class MyController(http.Controller):
 class MyController(http.Controller):
     @http.route('/api/json_get_request', auth='public', type='http',  csrf=False)
     def printjson(self, **kw):
-        return {'attribute': 'test'}
+        return data.get('result', {})
