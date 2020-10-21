@@ -33,6 +33,6 @@ class MyController(http.Controller):
         return {'attribute': 'test'}
 
 class MyController(http.Controller):
-    @http.route('/api/json_get_request', auth='public', type='json',  csrf=False)
+    @http.route('/api/json_get_request', auth='public', type='http',  csrf=False)
     def printjson(self, **kw):
         return {'attribute': 'test'}
