@@ -27,6 +27,11 @@ from odoo.addons.web.controllers.main import _serialize_exception
 from odoo.tools import html_escape
 
 
+class MyController(odoo.http.Controller):
+    @route('/some_url', auth='public')
+    def handler(self):
+        return {'attribute': 'test'}
+
 @http.route('/api/json_get_request', auth='public', type='json',  csrf=False)
 def printjson(self, **kw):
     return {'attribute': 'test'}
