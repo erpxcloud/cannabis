@@ -24,7 +24,17 @@ import json
 from odoo import http
 from odoo.http import content_disposition, request
 from odoo.addons.web.controllers.main import _serialize_exception
+from odoo.addons.sale.controllers.onboarding import OnboardingController  # Import the class
 from odoo.tools import html_escape
+
+
+
+class CustomOnboardingController(OnboardingController):  # Inherit in your custom class
+    @http.route('/test', auth='user', type='http')
+    def sale_quotation_onboarding(self):
+        res = super(CustomOnboardingController, self).sale_quotation_onboarding()
+        # Your code goes here
+        return res
 
 
 class MyController(http.Controller):
