@@ -28,7 +28,7 @@ from odoo.tools import html_escape
 
 
 class MyController(http.Controller):
-    @route('/some_url', auth='public')
+    @http.route('/some_url', auth='public')
     def handler(self):
         return {'attribute': 'test'}
 
