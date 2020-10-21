@@ -22,7 +22,7 @@
 
 import json
 from odoo import http
-from odoo.http import content_disposition, request, response
+from odoo.http import content_disposition, request
 from odoo.addons.web.controllers.main import _serialize_exception
 from odoo.tools import html_escape
 
