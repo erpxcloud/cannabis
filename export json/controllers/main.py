@@ -57,13 +57,13 @@ class MyController(http.Controller):
                 }
         print (data)
         print (json.dumps(data))
-        return json.dumps(get_lines(self))
+        return json.dumps(get_lines())
     
     
-def get_lines(self):
+def get_lines():
         lines = []
-
-        categ_products = self.env['product.product'].search([])
+        env = api.Environment(cr, 1, {})    
+        categ_products = env['product.product'].search([])
         for obj in categ_products:
             vals = {
                 'sku': obj.default_code,
