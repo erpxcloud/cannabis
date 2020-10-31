@@ -54,6 +54,7 @@ class MyController(http.Controller):
                 }
         print (data)
         print (json.dumps(data))
+        return json.dumps(data)
     
     
     
