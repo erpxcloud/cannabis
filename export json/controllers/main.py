@@ -62,10 +62,7 @@ class MyController(http.Controller):
     
 def get_lines():
         lines = []
-        env = api.Environment(cr, 1, {})    
-        r = modules.registry.RegistryManager.get('test')
-        cr = r.cursor()
-        categ_products = env['product.product'].search([])
+        categ_products = request.env['product.product'].search([])
         for obj in categ_products:
             vals = {
                 'sku': obj.default_code,
