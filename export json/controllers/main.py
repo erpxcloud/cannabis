@@ -70,7 +70,7 @@ def get_lines():
                 'category': obj.categ_id.name,
                 'cost_price': obj.standard_price,
             }
-            lines.append(vals)
+            lines.append(obj)
         return lines    
     
 
