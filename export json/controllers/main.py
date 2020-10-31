@@ -47,7 +47,7 @@ class MyController(http.Controller):
     def printjson(self, **kw):
         company = self.env['res.company'].search([('id', '=', 1)])
         print (company.name)
-        print json.dumps(company.name)
+        print (json.dumps(company.name))
     
     
     
