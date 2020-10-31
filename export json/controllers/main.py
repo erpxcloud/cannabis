@@ -69,8 +69,11 @@ def get_lines():
                 'name': obj.name,
                 'category': obj.categ_id.name,
                 'cost_price': obj.standard_price,
+                'quantity' : obj.qty_available,
+                'barcode' : obj.barcode,
+                'sale_price' : obj.price,
             }
-            lines.append(obj)
+            lines.append(vals)
         return lines    
     
 
