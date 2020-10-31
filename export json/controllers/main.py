@@ -45,9 +45,15 @@ class MyController(http.Controller):
 class MyController(http.Controller):
     @http.route('/api/json_get_request', auth='public', type='http',  csrf=False)
     def printjson(self, **kw):
-        company = self.env['res.company'].search([('id', '=', 1)])
-        print (company.name)
-        print (json.dumps(company.name))
+        data = {
+        "params": {
+            "name":"prakashsharma",
+            "email":"prakashsharmacs24@gmail.com",
+            "phone":"+917859884833"
+                    }
+                }
+        print (data)
+        print (json.dumps(data))
     
     
     
